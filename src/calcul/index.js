@@ -12,7 +12,8 @@ class CalculPage extends Component {
       depense_entreprise: "",
       salaire_brut: "",
       salaire_net: "",
-      type: ""
+      type: "",
+      selectedValue: "mois"
     };
   }
   componentDidMount() {
@@ -23,76 +24,42 @@ class CalculPage extends Component {
     switch (name) {
       case "depense_entreprise":
         this.setState({
-          salaire_net_impot:
-            this.state.type == "mois"
-              ? Math.floor(
-                  (this.state.depense_entreprise / 1.32) * 0.78 * 0.919
-                )
-              : Math.floor(
-                  (this.state.depense_entreprise / 1.32) * 0.78 * 0.919
-                ),
-          salaire_brut:
-            this.state.type == "mois"
-              ? Math.floor(this.state.depense_entreprise / 1.32)
-              : Math.floor(this.state.depense_entreprise / 1.32),
-          salaire_net:
-            this.state.type == "mois"
-              ? Math.floor((this.state.depense_entreprise * 0.78) / 1.32)
-              : Math.floor((this.state.depense_entreprise * 0.78) / 1.32)
+          salaire_net_impot: Math.floor(
+            (this.state.depense_entreprise / 1.32) * 0.78 * 0.919
+          ),
+          salaire_brut: Math.floor(this.state.depense_entreprise / 1.32),
+          salaire_net: Math.floor((this.state.depense_entreprise * 0.78) / 1.32)
         });
         break;
       case "salaire_brut":
         this.setState({
-          salaire_net_impot:
-            this.state.type == "mois"
-              ? Math.floor(this.state.salaire_brut * (0.78 * 0.919))
-              : Math.floor(this.state.salaire_brut * (0.78 * 0.919)),
-          depense_entreprise:
-            this.state.type == "mois"
-              ? Math.floor(this.state.salaire_brut * 1.32)
-              : Math.floor(this.state.salaire_brut * 1.32),
-          salaire_net:
-            this.state.type == "mois"
-              ? Math.floor(this.state.salaire_brut * 0.78)
-              : Math.floor(this.state.salaire_brut * 0.78)
+          salaire_net_impot: Math.floor(
+            this.state.salaire_brut * (0.78 * 0.919)
+          ),
+          depense_entreprise: Math.floor(this.state.salaire_brut * 1.32),
+          salaire_net: Math.floor(this.state.salaire_brut * 0.78)
         });
         break;
 
       case "salaire_net":
         this.setState({
-          salaire_net_impot:
-            this.state.type == "mois"
-              ? Math.floor(this.state.salaire_net * 0.919)
-              : Math.floor(this.state.salaire_net * 0.919),
-          depense_entreprise:
-            this.state.type == "mois"
-              ? Math.floor((this.state.salaire_net * 1.32) / 0.78)
-              : Math.floor((this.state.salaire_net * 1.32) / 0.78),
-          salaire_brut:
-            this.state.type == "mois"
-              ? Math.floor(this.state.salaire_net / 0.78)
-              : Math.floor(this.state.salaire_net / 0.78)
+          salaire_net_impot: Math.floor(this.state.salaire_net * 0.919),
+          depense_entreprise: Math.floor(
+            (this.state.salaire_net * 1.32) / 0.78
+          ),
+          salaire_brut: Math.floor(this.state.salaire_net / 0.78)
         });
         break;
 
       case "salaire_net_impot":
         this.setState({
-          salaire_net:
-            this.state.type == "mois"
-              ? Math.floor(this.state.salaire_net_impot / 0.919)
-              : Math.floor(this.state.salaire_net_impot / 0.919),
-          depense_entreprise:
-            this.state.type == "mois"
-              ? Math.floor(
-                  (this.state.salaire_net_impot * 1.32) / (0.919 * 0.78)
-                )
-              : Math.floor(
-                  (this.state.salaire_net_impot * 1.32) / (0.919 * 0.78)
-                ),
-          salaire_brut:
-            this.state.type == "mois"
-              ? Math.floor(this.state.salaire_net_impot / (0.78 * 0.919))
-              : Math.floor(this.state.salaire_net_impot / (0.78 * 0.919))
+          salaire_net: Math.floor(this.state.salaire_net_impot / 0.919),
+          depense_entreprise: Math.floor(
+            (this.state.salaire_net_impot * 1.32) / (0.919 * 0.78)
+          ),
+          salaire_brut: Math.floor(
+            this.state.salaire_net_impot / (0.78 * 0.919)
+          )
         });
         break;
     }
@@ -131,7 +98,7 @@ class CalculPage extends Component {
           />
           $/an
         </Button>
-        <Table style={{ width: "50%" }} striped bordered hover>
+        <Table style={{ width: "50%", marginTop: 10 }} striped bordered hover>
           <tbody>
             <tr>
               <td>Cout total Dépensé par l'entreprise</td>

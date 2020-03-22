@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 
 import CalculPage from "../calcul";
+import ContactPage from "../contact/index";
 
 class HomePage extends Component {
   constructor(props) {
@@ -28,11 +29,8 @@ class HomePage extends Component {
   render() {
     return (
       <div>
-        <p>
-          <h2>CALCULEZ RAPIDEMENT LE COÛT D’UN SALARIÉ</h2>
-        </p>
+        <h2>CALCULEZ RAPIDEMENT LE COÛT D’UN SALARIÉ</h2>
         <p>Vous voulez savoir combien coûte un salarié ?</p>
-
         <p>
           Vous pouvez, grâce à ce simulateur, estimer le coût réel d’un salarié
           quelque soit son statut (CDD, CDI, temps partiel etc.)
@@ -50,8 +48,7 @@ class HomePage extends Component {
           suffit de cliquer et tout vous est expliqué. Ce simulateur vous
           explique également à quoi servent vos cotisations.
         </p>
-
-        <CalculPage />
+        <CalculPage />/
       </div>
     );
   }
