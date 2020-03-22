@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 import CalculPage from "../calcul";
-import ContactPage from "../contact/index";
+
 
 class HomePage extends Component {
   constructor(props) {
